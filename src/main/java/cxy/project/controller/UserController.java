@@ -43,10 +43,7 @@ public class UserController {
     @PostMapping("/login")
     public Result<String> login(@RequestBody Map map, HttpSession session) {
 
-        String username = map.get("username").toString();
         String password = map.get("password").toString();
-
-        Object codeInSession = session.getAttribute(username);
 
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(User::getPassword, password);
@@ -54,11 +51,12 @@ public class UserController {
         User user = userService.getOne(queryWrapper);
         if (user != null) {
             log.info(user.toString());
-            session.setAttribute("user", user.getId());
+            session.setAttribute("userId", user.getId());
+            session.setAttribute("userName", user.getUsername());
 
-            return Result.success("login");
+            return Result.success("登录成功");
         } else {
-            return Result.error("login error");
+            return Result.error("登录失败");
         }
 
     }
