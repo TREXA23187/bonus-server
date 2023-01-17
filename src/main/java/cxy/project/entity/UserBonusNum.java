@@ -8,5 +8,5 @@ import java.io.Serializable;
 public class UserBonusNum implements Serializable {
 
     private Long userId ;
-    private Long bonusNum;
+    private Integer bonusNum;
 }

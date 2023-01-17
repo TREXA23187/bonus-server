@@ -40,6 +40,15 @@ public class UserController {
         }
     }
 
+    @GetMapping("/info")
+    public Result<User> isLogin(HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
+        log.info(userId.toString());
+        User user = userService.getById(userId);
+        return Result.success(user);
+    }
+
+
     @PostMapping("/login")
     public Result<String> login(@RequestBody Map map, HttpSession session) {
 

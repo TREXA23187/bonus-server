@@ -26,7 +26,7 @@ public class LoginCheckFilter implements Filter {
         String[] urls = new String[]{
                 "/user/login",
                 "/user/logout",
-//                "/user/**"
+//                "/bonus/**"
         };
 
         log.info(requestURI);
