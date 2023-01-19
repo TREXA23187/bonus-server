@@ -46,6 +46,7 @@ public class LoginCheckFilter implements Filter {
             return;
         }
 
+        log.warn("NOTLOGIN");
         response.getWriter().write(JSON.toJSONString(Result.error("NOTLOGIN")));
         return;
     }
